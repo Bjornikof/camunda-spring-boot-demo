@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_0fr9mxs" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.7.0">
+  <bpmn:process id="camunda-spring-demo-process" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_0pduu2a</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:endEvent id="EndEvent_0x6ir2l">
+      <bpmn:incoming>Flow_0it8wrw</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:serviceTask id="ST_createMessage" name="Create Message">
+      <bpmn:extensionElements>
+        <camunda:field name="serviceName">
+          <camunda:string>http://localhost:8080/message</camunda:string>
+        </camunda:field>
+        <camunda:connector>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="headers">
+              <camunda:map>
+                <camunda:entry key="Content-Type">application/json</camunda:entry>
+              </camunda:map>
+            </camunda:inputParameter>
+            <camunda:inputParameter name="payload">{
+"message":"${message}",
+"name":"${name}"
+
+}</camunda:inputParameter>
+            <camunda:inputParameter name="method">POST</camunda:inputParameter>
+            <camunda:inputParameter name="url">http://localhost:8080/message</camunda:inputParameter>
+          </camunda:inputOutput>
+          <camunda:connectorId>http-connector</camunda:connectorId>
+        </camunda:connector>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_17zyxpr</bpmn:incoming>
+      <bpmn:outgoing>Flow_0it8wrw</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="UT_GetInput" name="Get Input">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="message" label="message" type="string" />
+          <camunda:formField id="name" label="name" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0pduu2a</bpmn:incoming>
+      <bpmn:outgoing>Flow_17zyxpr</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0pduu2a" sourceRef="StartEvent_1" targetRef="UT_GetInput" />
+    <bpmn:sequenceFlow id="Flow_17zyxpr" sourceRef="UT_GetInput" targetRef="ST_createMessage" />
+    <bpmn:sequenceFlow id="Flow_0it8wrw" sourceRef="ST_createMessage" targetRef="EndEvent_0x6ir2l" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="camunda-spring-demo-process">
+      <bpmndi:BPMNEdge id="Flow_0pduu2a_di" bpmnElement="Flow_0pduu2a">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="300" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_17zyxpr_di" bpmnElement="Flow_17zyxpr">
+        <di:waypoint x="400" y="117" />
+        <di:waypoint x="490" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0it8wrw_di" bpmnElement="Flow_0it8wrw">
+        <di:waypoint x="590" y="117" />
+        <di:waypoint x="682" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_0x6ir2l_di" bpmnElement="EndEvent_0x6ir2l">
+        <dc:Bounds x="682" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_044ae2n_di" bpmnElement="ST_createMessage">
+        <dc:Bounds x="490" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_18dxkzg_di" bpmnElement="UT_GetInput">
+        <dc:Bounds x="300" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

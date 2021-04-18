@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.camunda.feel:feel-engine:scala-shaded:1.13.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.m2/repository/org/camunda/feel/feel-engine/1.13.1/feel-engine-1.13.1-scala-shaded.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.m2/repository/org/camunda/feel/feel-engine/1.13.1/feel-engine-1.13.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.m2/repository/org/camunda/feel/feel-engine/1.13.1/feel-engine-1.13.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
