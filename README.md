@@ -3,4 +3,4 @@ A simple demo project that makes use of Spring Boot and Camunda. Project's aim i
 
 Demo bpmn used by the project (Drawn with Camunda Modeler):
 ## Demo BPMN
-![Demo BPMN](https://ibb.co/RPhHvPW "Demo BPMN")
+![Demo BPMN](https://i.ibb.co/RPhHvPW/image.png "Demo BPMN")
